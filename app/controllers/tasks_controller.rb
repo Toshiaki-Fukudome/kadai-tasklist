@@ -13,7 +13,7 @@ class TasksController < ApplicationController
       redirect_to @task #showに飛ばす。
     else
       flash[:danger] = "タスクの登録に失敗しました！"
-      render :new_task_path
+      render :new
     end
   end
   
@@ -40,7 +40,7 @@ class TasksController < ApplicationController
       redirect_to @task #showに飛ばす
     else
       flash[:danger] = "タスクの更新に失敗しました！"
-      render :edit_task_path #editに飛ばす
+      render :edit #editに飛ばす
     end
   end
   
