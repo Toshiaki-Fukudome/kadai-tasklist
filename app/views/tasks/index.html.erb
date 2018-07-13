@@ -1,7 +1,29 @@
 <h1>タスクリスト一覧ページ</h1>
-<ul>
-<% @tasks.each do |task| %>
-<li><%= link_to(task.id,"/tasks/#{task.id}") %> :<%= task.status %> &gt; <%= task.content %></li>
+<% if @tasks.any? %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>ステータス</th>
+      <th>タスク</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= link_to task.id, task_path(task) %></td>
+        <td><%= task.status %></td>
+        <td><%= task.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>
-</ul>
-<%= link_to "タスクの登録はここから",new_task_path %>
+<div class="btn-toolbar" role="toolbar">
+  <%= paginate @tasks %>
+</div>
+
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  <%= link_to "タスクの登録はここから",new_task_path, class: "btn" %>
+</button>
