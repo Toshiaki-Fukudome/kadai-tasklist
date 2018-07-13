@@ -18,15 +18,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <div class="container">
-      <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6">
-      <!--767px以下の時12カラム表示-->
-      <!--768px以上の時8カラム余白2カラム表示-->
-      <!--1200px以上の時6カラム余白3カラム表示 -->
-        <%= render "layouts/navbar" %>
+    <%= render "layouts/navbar" %>
+      <div class="container">
         <%= render 'layouts/flash_messages' %>
         <%= yield %>
       </div>
-    </div>
   </body>
 </html>

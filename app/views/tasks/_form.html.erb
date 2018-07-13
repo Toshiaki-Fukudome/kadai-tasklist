@@ -1,5 +1,8 @@
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6">
+      <!--767px以下の時12カラム表示-->
+      <!--768px以上の時8カラム余白2カラム表示-->
+      <!--1200px以上の時6カラム余白3カラム表示 -->
     <%= form_for(@task) do |f| %>
       <% if @task.errors.any? %>
         <div class="alert alert-warning" id="error_explanation">
