@@ -1,15 +1,18 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :require_user_logged_in
   
   def index
     #ページネーションの追加
     #@tasks = Task.all.page(params[:page]).per(5)
     #descで並び替え
-    @tasks = Task.order(created_at: :desc).page(params[:page]).per(5)
+    if logged_in?
+      @tasks = current_user.tasks.order(created_at: :desc).page(params[:page]).per(5)
+    end
   end
   
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     
     if @task.save
       flash[:success] = "タスクの登録に成功しました！"
